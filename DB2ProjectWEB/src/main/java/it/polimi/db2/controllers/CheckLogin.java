@@ -33,12 +33,11 @@ public class CheckLogin extends HttpServlet {
 			throws ServletException, IOException {
 		
 		
-		// obtain and escape params
 		String usrn = null;
 		String pwd = null;
 		try {
 			usrn = request.getParameter("username");
-			pwd = request.getParameter("pwd");
+			pwd = request.getParameter("pwd"); 
 			System.out.print(usrn+" - "+ pwd);
 			if (usrn == null || pwd == null || usrn.isEmpty() || pwd.isEmpty()) {
 				throw new Exception("Missing or empty credential value");
