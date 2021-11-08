@@ -33,6 +33,7 @@ public class CheckLogin extends HttpServlet {
 			throws ServletException, IOException {
 		
 		
+		
 		String usrn = null;
 		String pwd = null;
 		try {
