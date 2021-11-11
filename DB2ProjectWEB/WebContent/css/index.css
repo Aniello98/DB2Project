@@ -29,3 +29,12 @@
 .container h3{
     margin-top: 0px;
 }
+
+.to-pay{
+	cursor:pointer;
+}
+
+.to-pay:hover{
+	background-color: rgba(169,68,66,255);
+	color: rgba(242,222,221,255);
+}
