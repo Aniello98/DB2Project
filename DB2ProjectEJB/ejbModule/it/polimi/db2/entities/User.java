@@ -31,10 +31,15 @@ public class User implements Serializable {
 	
 	private int failedPayments;
 
-
+	// Bidirectional many-to-one association to Order
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+	List<Order> orders;
+	
 
 	public User() {
 	}
+	
+	
 
 	public int getId() {
 		return this.id;
@@ -91,7 +96,14 @@ public class User implements Serializable {
 	public void setFailedPayments(int failedPayments) {
 		this.failedPayments = failedPayments;
 	}
-
+	
+	public List<Order> getOrders(){
+		return orders;
+	}
+	
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;	}
+	
 	
 
 }

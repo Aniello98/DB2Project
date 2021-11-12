@@ -3,5 +3,8 @@
 	<persistence-unit name="ProjectService">
 		<jta-data-source>ProjectResource</jta-data-source>
 		<class>it.polimi.db2.entities.User</class>
+		<class>it.polimi.db2.entities.Order</class>
+		<class>it.polimi.db2.entities.OptionalProduct</class>
+		<class>it.polimi.db2.entities.ServicePackage</class>
 	</persistence-unit>
 </persistence>

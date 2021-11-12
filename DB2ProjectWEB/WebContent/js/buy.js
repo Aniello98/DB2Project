@@ -12,20 +12,10 @@
         function(req) {
           if (req.readyState == XMLHttpRequest.DONE) {
             var message = req.responseText;
-            switch (req.status) {
-              case 200:
-            	sessionStorage.setItem('username', message);
-                window.location.href = "index.html";
-                break;
-              case 400: // bad request
-                document.getElementById("login_errormessage").textContent = message;
-                break;
-              case 401: // unauthorized
-                  document.getElementById("login_errormessage").textContent = message;
-                  break;
-              case 500: // server error
-            	document.getElementById("login_errormessage").textContent = message;
-                break;
+            if(req.status == 200) {
+
+              //create selects and append them
+            	document.getElementById("validityPeriod");
             }
           }
         }
