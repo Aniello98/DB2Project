@@ -6,41 +6,35 @@
     font-size: 4vh;
 }
 
-
-.costumized-form {
-    border-radius: 20px;
-    margin-top: 30px;
+.login-div{
+    float: right;
+    text-align: center;
+    height: 100%;
+    width: 100px;
 }
 
-.note {
-    text-align: left;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: #00cf8d;
-    font-weight: bold;
-}
-
-.form-content {
-    padding: 5%;
-    border: 1px solid #ced4da;
-    margin-bottom: 2%;
-}
-
-.form-control {
-    border-radius: 1.5rem;
-}
-
-.btnSubmit {
-    border: none;
-    border-radius: 1.5rem;
-    padding: 1%;
-    width: 20%;
+.login-div a{
+	color: white;
+    font-size: 2vh;
     cursor: pointer;
-    background: #00cf8d;
-    color: #fff;
+    text-decoration: none;
 }
 
-.message {
-    font-size: 15px;
-    padding-top: 15px;
+.service-package{
+    border: 2px solid #c4c4c4c4;
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.container h3{
+    margin-top: 0px;
+}
+
+.to-pay{
+	cursor:pointer;
+}
+
+.to-pay:hover{
+	background-color: rgba(169,68,66,255);
+	color: rgba(242,222,221,255);
 }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <script src="js/utils.js" charset="utf-8" defer></script>
+    <script src="js/loginManagement.js" charset="utf-8" defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="container">
+            Image Gallery
+        </div>
+    </div>
+
+
+    <!-- Login section -->
+    <div class="container register-form costumized-form">
+        <div class="form">
+            <div class="note">
+                <h3>login</h3>
+            </div>
+
+            <div class="form-content">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="username" id="user_id" placeholder="Username" value=""
+                                    required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="pwd" id="pass_id" placeholder="Password" value=""
+                                    required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="button" id="loginbutton" class="btnSubmit" value="submit">
+                    </div>
+                    <div class="row">
+                        <p id="login_errormessage" class="message"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- registration section -->
+    <div class="container register-form costumized-form">
+        <div class="form">
+            <div class="note">
+                <h3>register</h3>
+            </div>
+
+            <div class="form-content">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="username" placeholder="Your Name"
+                                    value="" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="mail" placeholder="Email" value=""
+                                    required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="pwd" placeholder="Your Password"
+                                    value="" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="repeatPwd"
+                                    placeholder="Confirm Password" value="" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="button" id="signupbutton" class="btnSubmit" value="submit">
+                    </div>
+                    <div class="row">
+                        <p class="message" id="signup_message"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

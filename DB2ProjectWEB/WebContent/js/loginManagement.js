@@ -6,6 +6,7 @@
 
   document.getElementById("loginbutton").addEventListener('click', (e) => {
     var form = e.target.closest("form");
+	console.log(form);
     if (form.checkValidity()) {
       makeCall("POST", 'CheckLogin', e.target.closest("form"),
         function(req) {
@@ -14,7 +15,7 @@
             switch (req.status) {
               case 200:
             	sessionStorage.setItem('username', message);
-                window.location.href = "home.html";
+                window.location.href = "index.html";
                 break;
               case 400: // bad request
                 document.getElementById("login_errormessage").textContent = message;
