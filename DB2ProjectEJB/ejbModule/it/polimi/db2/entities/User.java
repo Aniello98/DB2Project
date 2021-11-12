@@ -1,8 +1,9 @@
 package it.polimi.db2.entities;
 
-import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
+
+import java.io.Serializable;
+
 
 /**
  * The persistent class for the usertable database table.
