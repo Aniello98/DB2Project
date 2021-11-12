@@ -9,11 +9,9 @@
 	//Check login
 	window.addEventListener("load", () => {
 		if (sessionStorage.getItem("username") == null) {
-			console.log("Non loggato");
 			viewElements.loginBtn.innerHTML = "Login";
 			viewElements.loginBtn.setAttribute("href", "login.html");
 		} else {
-			console.log("Loggato - " + sessionStorage.getItem("username"));
 			viewElements.loginBtn.innerHTML = "Logout";
 			viewElements.loginBtn.addEventListener("click", () => {
 				sessionStorage.removeItem("username");
