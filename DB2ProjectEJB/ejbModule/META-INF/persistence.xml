@@ -3,5 +3,7 @@
 	<persistence-unit name="ProjectService">
 		<jta-data-source>ProjectResource</jta-data-source>
 		<class>it.polimi.db2.entities.User</class>
+		<class>it.polimi.db2.entities.Alert</class>
+		<class>it.polimi.db2.entities.ValidityPeriod</class>
 	</persistence-unit>
 </persistence>
