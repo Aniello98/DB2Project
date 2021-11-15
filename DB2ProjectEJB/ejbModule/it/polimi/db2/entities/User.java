@@ -1,8 +1,10 @@
 package it.polimi.db2.entities;
 
-import java.io.Serializable;
 import javax.persistence.*;
+
+import java.io.Serializable;
 import java.util.List;
+
 
 /**
  * The persistent class for the usertable database table.
@@ -32,8 +34,11 @@ public class User implements Serializable {
 	private int failedPayments;
 
 	// Bidirectional many-to-one association to Order
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
 	List<Order> orders;
+	
+	@OneToOne(mappedBy="user")
+	private Alert alert;
 	
 
 	public User() {

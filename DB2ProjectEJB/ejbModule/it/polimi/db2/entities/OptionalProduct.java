@@ -22,11 +22,11 @@ public class OptionalProduct implements Serializable {
 	
 	private float monthlyFee;
 	
-	//@ManyToMany(mappedBy="optionalProducts")
-	//private Collection<Order> orders;
+	@ManyToMany(mappedBy="optionalProducts")
+	private Collection<Order> orders;
 	
-	//@ManyToMany
-	//private Collection<ServicePackage> servicePackages;
+	@ManyToMany(mappedBy="optionalProducts")
+	private Collection<ServicePackage> servicePackages;
 
 	public OptionalProduct() {
 		super();

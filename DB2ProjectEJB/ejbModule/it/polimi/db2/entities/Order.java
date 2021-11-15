@@ -30,18 +30,21 @@ public class Order implements Serializable {
 	private boolean rejected;
 	
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "user")
 	private User user;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="orderedProduct",
+	joinColumns = @JoinColumn(name="order"),
+	inverseJoinColumns = @JoinColumn(name="optionalProduct"))
 	private Collection<OptionalProduct> optionalProducts;
 	
-	@ManyToOne
-	@JoinColumn(name = "id")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "validityPeriod" )
 	private ValidityPeriod validityPeriod;
 	
-	@ManyToOne
-	@JoinColumn(name = "id")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "servicePackage")
 	private ServicePackage servicePackage;
 	
 	

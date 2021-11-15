@@ -1,0 +1,21 @@
+.navbar {
+    background-color: #00cf8d;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    color: white;
+    font-size: 4vh;
+}
+
+.login-div{
+    float: right;
+    text-align: center;
+    height: 100%;
+    width: 100px;
+}
+
+.login-div a{
+	color: white;
+    font-size: 2vh;
+    cursor: pointer;
+    text-decoration: none;
+}

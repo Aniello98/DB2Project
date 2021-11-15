@@ -2,6 +2,7 @@ package it.polimi.db2.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -20,11 +21,26 @@ public class ServicePackage implements Serializable {
 	
 	private String name;
 
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="serviceValidity",
+	joinColumns = @JoinColumn(name="servicePackage"),
+	inverseJoinColumns = @JoinColumn(name="validityPeriod"))
 	private Collection<ValidityPeriod> validityPeriods;
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="offeredProducts",
+	joinColumns = @JoinColumn(name="servicePackage"),
+	inverseJoinColumns = @JoinColumn(name="optionalProduct"))
 	private Collection<OptionalProduct> optionalProducts;
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="offeredServices",
+	joinColumns = @JoinColumn(name="servicePackage"),
+	inverseJoinColumns = @JoinColumn(name="service"))
+	private Collection<Service> services;
+	
+	@OneToMany(mappedBy="servicePackage")
+	private List<Order> orders;
 	
 	
 	public ServicePackage() {

@@ -8,9 +8,11 @@
 <title>Document</title>
 <script src="js/utils.js" charset="utf-8" defer></script>
 <script src="js/buy.js" charset="utf-8" defer></script>
+<script src="js/checkLogin.js" charset="utf-8" defer></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/checkLogin.css">
+<link rel="stylesheet" href="css/style.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
@@ -29,8 +31,45 @@
 
 
 	<div class="container">
-            
+		<form class="form-horizontal">
+			<fieldset>
+			
+			
+			
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="validityPeriod">Validity period</label>
+			  <div class="col-md-4">
+				<select id="validityPeriod" name="validityPeriod" class="form-control">
+				</select>
+			  </div>
+			</div>
+			
+			<!-- Multiple Checkboxes -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="optionalProducts">Oprional Products</label>
+			  <div class="col-md-4" id="checkboxContainer">
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="startDate">Date of start</label>
+			  <div class="col-md-4">                     
+				<input type="date" name="start-date" class="form-control">
+			  </div>
+			</div>
 
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="startDate"></label>
+			  <div class="col-md-4">                     
+				<input type="submit" name="start-date" class="form-control">
+			  </div>
+			</div>
+			
+			</fieldset>
+			</form>
+			
+     
+			
     </div>
 </body>
 </html>
