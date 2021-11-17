@@ -13,7 +13,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name = "validityPeriod", schema = "db2project")
+@Table(name = "ValidityPeriod", schema = "db2project")
 
 
 public class ValidityPeriod implements Serializable {

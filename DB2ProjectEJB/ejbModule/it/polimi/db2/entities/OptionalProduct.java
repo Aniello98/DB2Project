@@ -10,7 +10,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name = "optionalProduct", schema = "db2project")
+@Table(name = "OptionalProduct", schema = "db2project")
 public class OptionalProduct implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -25,8 +25,8 @@ public class OptionalProduct implements Serializable {
 	@ManyToMany(mappedBy="optionalProducts")
 	private Collection<Order> orders;
 	
-	@ManyToMany(mappedBy="optionalProducts")
-	private Collection<ServicePackage> servicePackages;
+	//@ManyToMany(mappedBy="optionalProducts")
+	//private Collection<ServicePackage> servicePackages;
 
 	public OptionalProduct() {
 		super();

@@ -11,7 +11,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name = "alert", schema = "db2project")
+@Table(name = "Alert", schema = "db2project")
 
 public class Alert implements Serializable {
 

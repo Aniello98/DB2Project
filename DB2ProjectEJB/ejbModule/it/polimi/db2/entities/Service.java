@@ -5,12 +5,16 @@ import java.util.Collection;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 /**
  * Entity implementation class for Entity: Service
  *
  */
 @Entity
-@Table(name = "service", schema = "db2project")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@Table(name = "Service", schema = "db2project")
 public class Service implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -32,8 +36,8 @@ public class Service implements Serializable {
 	
 	private String type;
 	
-	@ManyToMany(mappedBy="services")
-	private Collection<ServicePackage> servicePackages;
+	//@ManyToMany(mappedBy="services")
+	//private Collection<ServicePackage> servicePackages;
 	
 	public Service() {
 		super();

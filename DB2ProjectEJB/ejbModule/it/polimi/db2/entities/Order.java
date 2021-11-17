@@ -11,7 +11,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name = "order", schema = "db2project")
+@Table(name = "Order", schema = "db2project")
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -34,7 +34,7 @@ public class Order implements Serializable {
 	private User user;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="orderedProduct",
+	@JoinTable(name="OrderedProduct",
 	joinColumns = @JoinColumn(name="order"),
 	inverseJoinColumns = @JoinColumn(name="optionalProduct"))
 	private Collection<OptionalProduct> optionalProducts;
