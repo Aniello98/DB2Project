@@ -5,6 +5,8 @@ import java.util.Collection;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * Entity implementation class for Entity: OptionalProduct
  *

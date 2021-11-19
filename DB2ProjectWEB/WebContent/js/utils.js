@@ -10,7 +10,6 @@
 	    }; // closure
 	    req.open(method, url);
 	    if (formElement == null) {
-		  console.log("Form is null\n");
 	      req.send();
 	    } else {
 	      req.send(new FormData(formElement));

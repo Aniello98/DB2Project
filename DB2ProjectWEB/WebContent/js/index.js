@@ -49,20 +49,6 @@
                                 card.appendChild(body)
 								document.getElementById("packagesContainer").appendChild(card);
 							});
-              response.optionalProducts.forEach(function (product) {
-							var checkboxDiv = document.createElement("div");
-							checkboxDiv.setAttribute("class", "checkbox");
-
-							var label = document.createElement("label");
-							label.setAttribute("for", product.id);
-
-							label.innerHTML = "<input type='checkbox' name='optional-products' value='"+product.name+"'>"+product.name;
-							checkboxDiv.appendChild(label);
-
-								document.getElementById("checkboxContainer").appendChild(checkboxDiv)
-							});
-              //create selects and append them
-            	document.getElementById("validityPeriod");
             }
           }
         }
