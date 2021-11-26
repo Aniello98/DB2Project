@@ -1,0 +1,20 @@
+body table{
+    width: 100%;
+}
+body tr{
+    padding-bottom: 15px;
+}
+
+body td{
+    vertical-align: top;
+}
+
+/*
+#login-btn{
+    display: none;
+}
+
+#confirm-btn{
+    display: none;
+}
+*/

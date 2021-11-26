@@ -14,7 +14,9 @@
             switch (req.status) {
               case 200:
             	sessionStorage.setItem('username', message);
-                window.location.href = "index.html";
+              if(getParameter("redirect")=="confirmation")
+              window.location.replace("confirmation.html");
+              else window.location.replace("index.html");
                 break;
               case 400: // bad request
                 document.getElementById("login_errormessage").textContent = message;

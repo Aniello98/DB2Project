@@ -6,6 +6,10 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 
 /**
@@ -29,12 +33,11 @@ public class ValidityPeriod implements Serializable {
 	
 	private float monthlyFee;
 	
-	@OneToMany(mappedBy="validityPeriod")
-	private List<Order> orders;
+	//@OneToMany(mappedBy="validityPeriod")
+	//private List<Order> orders;
 	
-	@ManyToMany(mappedBy="validityPeriods")
-	private Collection<ServicePackage> packages;
-	
+	//@ManyToMany(mappedBy="validityPeriods")
+	//private Collection<ServicePackage> packages;
 	
 	
 	public ValidityPeriod() {

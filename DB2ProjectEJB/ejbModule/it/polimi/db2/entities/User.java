@@ -13,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "User", schema = "db2project")
 @NamedQuery(name = "User.checkCredentials", query = "SELECT r FROM User r  WHERE r.username = ?1 and r.password = ?2")
+@NamedQuery(name = "User.getByUsername", query = "SELECT r FROM User r  WHERE r.username = ?1")
 
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -34,8 +35,8 @@ public class User implements Serializable {
 	private int failedPayments;
 
 	// Bidirectional many-to-one association to Order
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-	List<Order> orders;
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+	//List<Order> orders;
 	
 	@OneToOne(mappedBy="user")
 	private Alert alert;
@@ -102,12 +103,15 @@ public class User implements Serializable {
 		this.failedPayments = failedPayments;
 	}
 	
+	/*
 	public List<Order> getOrders(){
 		return orders;
 	}
 	
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;	}
+		
+	*/
 	
 	
 

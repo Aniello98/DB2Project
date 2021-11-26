@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<html lang="en">
 
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Document</title>
+	<script src="js/utils.js" charset="utf-8" defer></script>
+	<script src="js/checkLogin.js" charset="utf-8" defer></script>
+	<script src="js/confirmation.js" charset="utf-8" defer></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/confirmation.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<!-- Navbar -->
+	<div class="navbar">
+		<div class="container">
+			<div class="login-div">
+				<a id="usernameField"></a>
+				<a id="login-btn"></a>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="container">
+
+
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">Summary</h3>
+				</div>
+				<div class="modal-body">
+					<table>
+						<tr class="row-border">
+							<td><b>Package: </b></td>
+							<td id="packageField" class="padding-20"></td>
+						</tr>
+						<tr class="row-border">
+							<td><b>Validity: </b></td>
+							<td id="validityField" class="padding-20"></td>
+						</tr>
+						<tr class="row-border">
+							<td><b>Optional products: </b></td>
+							<td id="productsField" class="padding-20"></td>
+						</tr>
+						<tr class="row-border">
+							<td><b>Start date: </b></td>
+							<td id="dateField" class="padding-20"></td>
+						</tr>
+						<tr>
+							<td><b>Total price: </b></td>
+							<td id="priceField" class="padding-20"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="confirm-btn" class="btn btn-primary">Confirm and Pay</button>
+					<button type="button" id="login-reg-btn" class="btn btn-primary">Login or Register</button>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
 </body>
+
 </html>

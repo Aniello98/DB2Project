@@ -1,7 +1,7 @@
 package it.polimi.db2.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Collection;
 
 import javax.persistence.*;
@@ -35,7 +35,7 @@ public class Order implements Serializable {
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="OrderedProduct",
-	joinColumns = @JoinColumn(name="order"),
+	joinColumns = @JoinColumn(name="orderId"),
 	inverseJoinColumns = @JoinColumn(name="optionalProduct"))
 	private Collection<OptionalProduct> optionalProducts;
 	
@@ -52,6 +52,9 @@ public class Order implements Serializable {
 		super();
 	}
 
+	public int getId() {
+		return this.id;
+	}
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -72,8 +75,8 @@ public class Order implements Serializable {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setStartDate(Date date) {
+		this.startDate = date;
 	}
 
 	public boolean isValid() {
@@ -91,5 +94,32 @@ public class Order implements Serializable {
 	public void setRejected(boolean rejected) {
 		this.rejected = rejected;
 	}
-   
+	
+	public Collection<OptionalProduct> getOptionalProducts() {
+		return optionalProducts;
+	}
+
+	public void setOptionalProducts(Collection<OptionalProduct> optionalProducts) {
+		this.optionalProducts = optionalProducts;
+	}
+	
+	public ValidityPeriod getValidityPeriod() {
+		return validityPeriod;
+	}
+
+	public void setValidityPeriod(ValidityPeriod validityPeriod) {
+		this.validityPeriod = validityPeriod;
+	}
+	public ServicePackage getServicePackage() {
+		return servicePackage;
+	}
+
+	public void setServicePackage(ServicePackage servicePackage) {
+		this.servicePackage = servicePackage;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 }

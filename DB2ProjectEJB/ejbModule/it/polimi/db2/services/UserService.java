@@ -32,6 +32,13 @@ public class UserService {
 		throw new NonUniqueResultException("More than one user registered with same credentials");
 
 	}
+	
+	public User findUserByUsername(String usrn) {
+		User user = null;
+		user = em.createNamedQuery("User.getByUsername", User.class).setParameter(1, usrn).getSingleResult();
+		
+		return user;
+	}
 
 	public void updateProfile(User u) throws UpdateProfileException {
 		try {

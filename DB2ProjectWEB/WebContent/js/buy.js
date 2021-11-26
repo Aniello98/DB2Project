@@ -1,5 +1,5 @@
-(function() {
-	var viewElements, validityPeriods=[], startDate, optionalProducts=[];
+(function () {
+	var servicePackage;
 
 	//References to the html elements
 	viewElements = {
@@ -8,96 +8,75 @@
 
 	//Call BuyService and retrive
 	window.addEventListener("load", () => {
-        makeCall("GET", 'BuyService?service=' + getParameter("service"), null,
-        function(req) {
-          if (req.readyState == XMLHttpRequest.DONE) {
-            if(req.status == 200) {
-              var response = JSON.parse(req.responseText);
-							response.validityPeriods.forEach(function (period) {
-								var option = document.createElement("option");
-								option.value = period.months+"m - "+period.monthlyFee+"€";
-								option.innerHTML = period.months+"m - "+period.monthlyFee+"€";
+		makeCall("GET", 'BuyService?packageId=' + getParameter("packageId"), null,
+			function (req) {
+				if (req.readyState == XMLHttpRequest.DONE) {
+					if (req.status == 200) {
+						servicePackage = JSON.parse(req.responseText);
+						document.getElementById("packageId").value = servicePackage.id;
+						for (var i = 0; i < servicePackage.validityPeriods.length; i++) {
+							period = servicePackage.validityPeriods[i];
+							var option = document.createElement("option");
+							option.value = servicePackage.validityPeriods[i].id;
+							option.innerHTML = period.months + "m - " + period.monthlyFee + "€/m";
 
-								document.getElementById("validityPeriod").appendChild(option)
-							});
-              response.optionalProducts.forEach(function (product) {
+							document.getElementById("validityPeriod").appendChild(option)
+						}
+						for (var i = 0; i < servicePackage.optionalProducts.length; i++) {
+							var product = servicePackage.optionalProducts[i];
 							var checkboxDiv = document.createElement("div");
 							checkboxDiv.setAttribute("class", "checkbox");
 
 							var label = document.createElement("label");
 							label.setAttribute("for", product.id);
 
-							label.innerHTML = "<input type='checkbox' name='optional-products' value='"+product.name+"'>"+product.name;
+							label.innerHTML = "<input type='checkbox' name='optional-products' value='" + servicePackage.optionalProducts[i].id + "'>" + product.name + " - " + product.monthlyFee + "€/m";
 							checkboxDiv.appendChild(label);
 
-								document.getElementById("checkboxContainer").appendChild(checkboxDiv)
-							});
-              //create selects and append them
-            	document.getElementById("validityPeriod");
-            }
-          }
-        }
-      );
+							document.getElementById("checkboxContainer").appendChild(checkboxDiv)
+						}
+
+						//create selects and append them
+						document.getElementById("validityPeriod");
+					}
+				}
+			}
+		);
 	}, false);
 
-	/** 
-	document.getElementById("validityPeriod").addEventListener("change", ()=>{
-		validityPeriod = document.getElementById("validityPeriod").value;
-	});
 
-	document.getElementById("startDate").addEventListener("change", ()=>{
-		startDate = document.getElementById("startDate").value;
-		alert(startDate);
-	});
 
-	document.getElementById("checkboxContainer").addEventListener("change", ()=>{
-		var checkboxes = document.getElementsByName("optional-products");
-		optionalProducts = [];
-		for(c=0; c<checkboxes.length; c++){
-			if(checkboxes[c].checked){
-				optionalProducts.push(checkboxes[c]);
-			}
+	document.getElementById("submit-button").addEventListener("click", (e) => {
+		var HTMLForm = e.target.closest("form");
+		if (HTMLForm.checkValidity()) {
+			makeCall("POST", 'CreateOrder', HTMLForm,
+				function (req) {
+					if (req.readyState == XMLHttpRequest.DONE) {
+						if (req.status == 200) {
+							order = JSON.parse(req.responseText);
+							sessionStorage.setItem("order", JSON.stringify(order));
+							window.location.replace("confirmation.html");
+						}
+					}
+				}
+			);
+
 		}
-		alert(JSON.stringify(optionalProducts));
-	})
-
-	*/
-
-	document.getElementById("submit-button").addEventListener("click", (e)=>{
-		var form = new FormData(e.target.closest("form"));
-		var checkedBoxes = getCheckedBoxes("optional-products");
-		form.append("optionalProducts", checkedBoxes);
-
-		document.getElementById("packageField").innerHTML = getParameter("serviceName");
-		document.getElementById("validityField").innerHTML = form.get("validityPeriod");
-		document.getElementById("dateField").innerHTML = form.get("startDate");
-		var productsString = "";
-		for(i in checkedBoxes){
-			if(productsString==""){
-				productsString = checkedBoxes[i];
-			}
-			else{
-				productsString = productsString +"\n" + checkedBoxes[i];
-			}
-		}
-		document.getElementById("productsField").innerHTML = productsString;
-		$("#modal").modal();
-		
-	
 	});
+
 
 	function getCheckedBoxes(chkboxName) {
 		var checkboxes = document.getElementsByName(chkboxName);
 		var checkboxesChecked = [];
 		// loop over them all
-		for (var i=0; i<checkboxes.length; i++) {
-		   // And stick the checked ones onto an array...
-		   if (checkboxes[i].checked) {
-			  checkboxesChecked.push(checkboxes[i].value);
-		   }
+		for (var i = 0; i < checkboxes.length; i++) {
+			// And stick the checked ones onto an array...
+			if (checkboxes[i].checked) {
+				checkboxesChecked.push(checkboxes[i].value);
+			}
 		}
 		return checkboxesChecked;
-	  }
+	}
 
 
 

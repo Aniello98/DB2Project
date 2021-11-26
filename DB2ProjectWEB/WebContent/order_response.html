@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Order Response</title>
+    <script src="js/utils.js" charset="utf-8" defer></script>
+    <script src="js/checkLogin.js" charset="utf-8" defer></script>
+    <script src="js/order-response.js" charset="utf-8" defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="container">
+            <div class="login-div">
+                <a id="usernameField"></a>
+                <a id="login-btn"></a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div id="order-ok">
+            <h3>Order confirmed!</h3>
+            <p>Your payment has been successfully made and your order has been confirmed</p>
+            <br><br><a href="index.html" class="btn btn-primary float-right">Home</a>
+        </div>
+
+        <div id="order-ko">
+            <h3>Order rejected!</h3>
+            <p>Your payment has been refused and your order has been rejected. <br>You can try the payment again by
+                clicking on "try again" or go back to the home page and try again later.</p>
+            <br><br><a href="index.html" class="btn btn-primary float-right">Home</a>
+            <button type="button" id="retry-btn" class="btn btn-primary">Try Again</button>
+        </div>
+
+
+    </div>
 </body>
+
 </html>

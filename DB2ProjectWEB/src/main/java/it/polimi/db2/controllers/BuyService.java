@@ -4,6 +4,8 @@ package it.polimi.db2.controllers;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.ejb.EJB;
+import javax.persistence.PersistenceException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,11 +20,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import it.polimi.db2.entities.OptionalProduct;
+import it.polimi.db2.entities.ServicePackage;
 import it.polimi.db2.entities.ValidityPeriod;
+import it.polimi.db2.exceptions.ProjectException;
+import it.polimi.db2.services.ServicePackageService;
 
 @WebServlet("/BuyService")
 public class BuyService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@EJB(name = "it.polimi.db2.services/ServicePackageService")
+	private ServicePackageService spService;
 
 	public BuyService() {
 		super();
@@ -32,43 +39,43 @@ public class BuyService extends HttpServlet {
 			throws ServletException, IOException {
 
 		// TODO Auto-generated method stub
-		String servicePackage = request.getParameter("service");
+		String id = request.getParameter("packageId");
+		int packageId;
+		if(id != null) {
+			packageId = Integer.parseInt(id);
+		}
+		else {
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().println("Id cannot be null");
+			return;
+		}
 		
-		ValidityPeriod v = new ValidityPeriod();
-		v.setMonthlyFee((float) 12.5);
-		v.setMonths(24);
-		
-		ArrayList<ValidityPeriod> validityPeriods = new ArrayList<ValidityPeriod>();
-		validityPeriods.add(v);
-		
-		OptionalProduct op1 = new OptionalProduct();
-		op1.setMonthlyFee((float) 15.6);
-		op1.setName("Prodotto1");
-		
-		OptionalProduct op2 = new OptionalProduct();
-		op2.setMonthlyFee((float) 20.6);
-		op2.setName("Prodotto2");
-		
-		ArrayList<OptionalProduct> optionalProducts = new ArrayList<OptionalProduct>();
-		optionalProducts.add(op1);
-		optionalProducts.add(op2);
-		
-		Gson gson = new GsonBuilder().setDateFormat("yyyy MMM dd").create();
-		String json1 = gson.toJson(validityPeriods);
-		String json2 = gson.toJson(optionalProducts);
-		
-		String json = "{"+'"'+"validityPeriods"+'"'+":"+ json1 + ", "+'"'+"optionalProducts"+'"'+" :"+ json2 + "}";
-		
-		
-		
+		ServicePackage servicePackage = null;
+
+		try {
+			servicePackage = spService.findPackageById(packageId);
+		} catch (ProjectException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		response.setStatus(HttpServletResponse.SC_OK);
-		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().println(json);
+
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").create();
+		String json = gson.toJson(servicePackage);
+
+		if (servicePackage == null) {
+			response.getWriter().println("Service package not available");
+		}
+		else {
+			response.setContentType("application/json");
+			response.getWriter().println(json);
+		}
+		
 
 	}
-
-	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

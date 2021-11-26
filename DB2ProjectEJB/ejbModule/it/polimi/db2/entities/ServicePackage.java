@@ -15,7 +15,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  *
  */
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 @Table(name = "ServicePackage", schema = "db2project")
 @NamedQuery(name = "ServicePackage.findAll", query="SELECT p FROM ServicePackage p")
 public class ServicePackage implements Serializable {
@@ -45,8 +44,8 @@ public class ServicePackage implements Serializable {
 	inverseJoinColumns = @JoinColumn(name="service"))
 	private Collection<Service> services;
 	
-	@OneToMany(mappedBy="servicePackage")
-	private List<Order> orders;
+	//@OneToMany(mappedBy="servicePackage")
+	//private List<Order> orders;
 	
 	
 	public ServicePackage() {

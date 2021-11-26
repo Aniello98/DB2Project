@@ -31,6 +31,18 @@ public class ServicePackageService {
 		}
 		return servicePackages;
 	}
+	
+	public ServicePackage findPackageById(int id) throws ProjectException {
+		ServicePackage servicePackage = null;
+		
+		try {
+			servicePackage = em.find(ServicePackage.class, id);
+		}catch(PersistenceException e){
+			throw new ProjectException("Cannot load service packages");
+		}
+		
+		return servicePackage;
+	}
 
 	/*public void updateServicePackage(ServicePackage p) throws UpdateProfileException {
 		try {
