@@ -1,10 +1,16 @@
 package it.polimi.db2.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 
 import it.polimi.db2.entities.Order;
+import it.polimi.db2.entities.User;
+import it.polimi.db2.exceptions.UpdateProfileException;
 
 @Stateless
 public class OrderService {
@@ -24,6 +30,19 @@ public class OrderService {
 	}
 	
 	public void updateOrder(Order order) {
-		em.merge(order);
+		try {
+			em.merge(order);
+		} catch (PersistenceException e) {
+			throw e;
+		}
+	}
+	
+	public List<Order> findRejectedByUser(User user){
+		List<Order> rejectedOrders = new ArrayList<Order>();
+		
+		rejectedOrders = em.createNamedQuery("Order.findRejected", Order.class).setParameter(1, user)
+						.getResultList();
+		
+		return rejectedOrders;
 	}
 }

@@ -57,9 +57,9 @@
 			function (req) {
 				if (req.readyState == XMLHttpRequest.DONE) {
 					if (req.status == 200) {
-						response = JSON.parse(req.responseText);
-						console.log(response);
-						window.location.replace("order_response.html?response=" + response);
+						order = JSON.parse(req.responseText);
+						sessionStorage.setItem("order", JSON.stringify(order));
+						window.location.replace("order_response.html");
 					}
 				}
 			}

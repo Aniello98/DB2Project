@@ -12,6 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "Order", schema = "db2project")
+@NamedQuery(name = "Order.findRejected", query = "SELECT o FROM Order o  WHERE o.user = ?1 AND o.rejected = true")
 public class Order implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

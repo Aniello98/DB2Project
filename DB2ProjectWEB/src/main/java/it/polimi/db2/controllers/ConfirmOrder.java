@@ -56,15 +56,18 @@ public class ConfirmOrder extends HttpServlet {
 		String username = request.getParameter("user");
 		Gson gson = new Gson(); // Or use new GsonBuilder().create();
 		
-		Order order = gson.fromJson(json, Order.class);
+		Order orderRequest = gson.fromJson(json, Order.class);
 		
-		User user = uService.findUserByUsername(username);
-		Date date = new Date(System.currentTimeMillis());
-		order.setUser(user);
-		order.setCreationDate(date);
+		Order order = oService.findOrder(orderRequest.getId());
 		
-		
-		oService.persistOrder(order);
+		if(order == null) {
+			order = orderRequest;
+			User user = uService.findUserByUsername(username);
+			Date date = new Date(System.currentTimeMillis());
+			order.setUser(user);
+			order.setCreationDate(date);
+			oService.persistOrder(order);
+		}
 		
 		request.setAttribute("order", order);
 		

@@ -18,7 +18,6 @@ function makeCall(method, url, formElement, cback, reset = true) {
 		formElement.reset();
 	}
 
-
 }
 
 function makeCallForm(method, url, formElement, cback) {

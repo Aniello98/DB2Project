@@ -45,7 +45,7 @@ public class LoadPackages extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		Gson gson = new GsonBuilder().setDateFormat("yyyy MMM dd").create();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").create();
 		String json = gson.toJson(servicePackages);
 		
 		response.setStatus(HttpServletResponse.SC_OK);

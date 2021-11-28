@@ -33,12 +33,17 @@ public class UserService {
 
 	}
 	
+	public User findUserById(int id) {
+		return em.find(User.class, id);
+	}
+	
 	public User findUserByUsername(String usrn) {
 		User user = null;
 		user = em.createNamedQuery("User.getByUsername", User.class).setParameter(1, usrn).getSingleResult();
 		
 		return user;
 	}
+	 
 
 	public void updateProfile(User u) throws UpdateProfileException {
 		try {
