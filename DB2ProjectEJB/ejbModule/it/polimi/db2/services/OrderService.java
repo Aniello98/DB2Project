@@ -26,13 +26,16 @@ public class OrderService {
 	}
 	
 	public Order findOrder(int id) {
+		System.out.println("Eseguo findOrder("+id+")");
 		return em.find(Order.class, id);
 	}
 	
 	public void updateOrder(Order order) {
 		try {
+			System.out.println("Eseguo merge");
 			em.merge(order);
 		} catch (PersistenceException e) {
+			System.out.println("Errore durante la merge");
 			throw e;
 		}
 	}

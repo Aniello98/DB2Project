@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
  */
 @Entity
 @Table(name = "OptionalProduct", schema = "db2project")
+@NamedQuery(name = "OptionalProduct.findAll", query = "SELECT op FROM OptionalProduct op")
 public class OptionalProduct implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

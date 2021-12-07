@@ -43,7 +43,7 @@ public class LoadRejected extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		User user = uService.findUserByUsername(request.getParameter("username"));
+		User user = uService.findUserByUsername(request.getParameter("username")).get(0);
 		
 		List<Order> rejectedOrders = oService.findRejectedByUser(user);
 		

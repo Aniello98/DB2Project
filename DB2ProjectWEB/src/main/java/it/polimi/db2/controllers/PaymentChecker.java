@@ -44,21 +44,29 @@ public class PaymentChecker extends HttpServlet {
 		boolean payed = (boolean) request.getAttribute("paymentResult");
 		Order orderToUpdate = (Order)request.getAttribute("order");
 		
+		System.out.println("Cerco ordine #"+orderToUpdate.getId());
+		
 		Order order = oService.findOrder(orderToUpdate.getId());
 		
 		
 		if(order == null) {
+			System.out.println("Ordine non trovato");
 			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			response.getWriter().println("Order not found");
 			return;
 		}
 		
+		System.out.println("Ordine trovato");
+		
 		if(!payed){
+			System.out.println("Pagamento rifiutato");
 			order.setRejected(true);	
 		}
 		else {
+			System.out.println("Pagamento eseguito");
 			order.setRejected(false);
 		}
+		System.out.println("Aggiorno ordine");
 		oService.updateOrder(order);
 		
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").create();

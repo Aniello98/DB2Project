@@ -62,7 +62,7 @@ public class ConfirmOrder extends HttpServlet {
 		
 		if(order == null) {
 			order = orderRequest;
-			User user = uService.findUserByUsername(username);
+			User user = uService.findUserByUsername(username).get(0);
 			Date date = new Date(System.currentTimeMillis());
 			order.setUser(user);
 			order.setCreationDate(date);

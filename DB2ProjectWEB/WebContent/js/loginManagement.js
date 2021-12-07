@@ -13,10 +13,16 @@
             var message = req.responseText;
             switch (req.status) {
               case 200:
-            	sessionStorage.setItem('username', message);
-              if(getParameter("redirect")=="confirmation")
+              response = JSON.parse(req.responseText);
+            	sessionStorage.setItem('username', response.usrn);
+              if(response.isEmployee == true){
+                window.location.replace("employee_page.html");
+              }
+              else{
+                if(getParameter("redirect")=="confirmation")
               window.location.replace("confirmation.html");
               else window.location.replace("index.html");
+              }
                 break;
               case 400: // bad request
                 document.getElementById("login_errormessage").textContent = message;
@@ -54,7 +60,7 @@
 	        function(req) {
 	          if (req.readyState == XMLHttpRequest.DONE) {
 	            var message = req.responseText;
-				document.getElementById("signup_message").textContent = message;
+				      document.getElementById("signup_message").textContent = message;
 	            }
 	          }
 	      );

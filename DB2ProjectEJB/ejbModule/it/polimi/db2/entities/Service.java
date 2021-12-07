@@ -13,8 +13,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  *
  */
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 @Table(name = "Service", schema = "db2project")
+@NamedQuery(name = "Service.findAll", query = "SELECT s FROM Service s")
 public class Service implements Serializable {
 	private static final long serialVersionUID = 1L;
 

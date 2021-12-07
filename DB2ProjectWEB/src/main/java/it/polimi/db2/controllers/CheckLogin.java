@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jose4j.json.internal.json_simple.JSONObject;
+
 //import org.apache.commons.lang.StringEscapeUtils;
 
 import it.polimi.db2.services.UserService;
@@ -55,19 +57,22 @@ public class CheckLogin extends HttpServlet {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Could not check credentials");
 			return;
 		}
-
-		// If the user exists, add info to the session and go to home page, otherwise
-		// show login page with error message
+		
+		
+		
 
 		if (user == null) {
 			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 			response.getWriter().println("Incorrect credentials");
 		} else {
+			JSONObject json = new JSONObject();
+			json.put("usrn", user.getUsername());
+			json.put("isEmployee", user.isEmployee());
 			request.getSession().setAttribute("user", user);
 			response.setStatus(HttpServletResponse.SC_OK);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().println(usrn);
+			response.getWriter().println(json);
 		}
 
 	}

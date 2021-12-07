@@ -21,31 +21,41 @@
 
   var loadRejected = function (username) {
 
+    var payRejected = (id) => {
+      makeCall("GET", "GetOrder?id=" + id, null,
+        function (req) {
+          if (req.readyState == XMLHttpRequest.DONE) {
+            if (req.status == 200) {
+              order = JSON.parse(req.responseText);
+              sessionStorage.setItem("order", JSON.stringify(order));
+              window.location.replace("confirmation.html");
+            }
+          }
+        });
+    }
+
     makeCall("GET", 'LoadRejected?username=' + username, null,
       function (req) {
         if (req.readyState == XMLHttpRequest.DONE) {
           if (req.status == 200) {
+            var rejectedOrders = [];
             rejectedOrders = JSON.parse(req.responseText);
-            for (i in rejectedOrders) {
+            if(rejectedOrders.length == 0){
+              document.getElementById("rejected-container").style.display = "none";
+              return;
+            }
+            rejectedOrders.forEach((o) => {
               var container = document.createElement('div');
               container.setAttribute("class", "alert alert-danger to-pay");
               container.setAttribute("role", "alert");
 
-              container.innerHTML = "#"+rejectedOrders[i].id+": "+rejectedOrders[i].creationDate + " - " + rejectedOrders[i].totalValue;
+              container.innerHTML = "#" + o.id + ": " + o.creationDate + " - " + o.totalValue;
+              var id = o.id;
               container.addEventListener("click", ()=>{
-                makeCall("GET", "GetOrder?id="+rejectedOrders[i].id, null,
-                function (req) {
-                  if (req.readyState == XMLHttpRequest.DONE) {
-                    if (req.status == 200) {
-                      order = JSON.parse(req.responseText);
-                      sessionStorage.setItem("order", JSON.stringify(order));
-                      window.location.replace("confirmation.html");
-                    }
-                  }
-                });
-              });
+                payRejected(id);}, id);
               document.getElementById("rejected-list").appendChild(container);
-            }
+            });
+              
 
           }
         }

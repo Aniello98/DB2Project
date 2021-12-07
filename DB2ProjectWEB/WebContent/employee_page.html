@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee page</title>
+    <script src="js/utils.js" charset="utf-8" defer></script>
+    <script src="js/employeePage.js" charset="utf-8" defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="container">
+            <div class="login-div">
+                <a id="login-btn"></a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- create package section -->
+    <div class="container register-form costumized-form">
+        <div class="form">
+            <div class="note">
+                <h3>package creation</h3>
+            </div>
+
+            <div class="form-content">
+                <form class="form-horizontal">
+                    <fieldset>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="name">Package name</label>  
+                      <div class="col-md-4">
+                      <input id="name" name="name" type="text" placeholder="" class="form-control input-md">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Select Basic -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="validity">Validity period</label>
+                      <div class="col-md-4">
+                        <select id="validity" name="validity" class="form-control">
+                          <option value="12">12</option>
+                          <option value="24">24</option>
+                          <option value="36">36</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="fee">Monthly fee</label>  
+                      <div class="col-md-4">
+                      <input id="fee" name="fee" type="text" placeholder="" class="form-control input-md">
+                        
+                      </div>
+                    </div>
+                    
+                    <!-- Multiple Checkboxes -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="products">Optional products</label>
+                      <div class="col-md-4" id="checkboxContainer">
+                      
+                      </div>
+                    </div>
+                    
+                    <!-- Multiple Checkboxes -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="services">Services</label>
+                      <div class="col-md-4" id="servicesContainer">
+                
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="button" id="packagebutton" class="btnSubmit" value="submit">
+                    </div>
+                    
+                    </fieldset>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- registration section -->
+    <div class="container register-form costumized-form">
+        <div class="form">
+            <div class="note">
+                <h3>register</h3>
+            </div>
+
+            <div class="form-content">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="username" placeholder="Your Name" value=""
+                                    required />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="mail" placeholder="Email" value=""
+                                    required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="pwd" placeholder="Your Password"
+                                    value="" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="repeatPwd"
+                                    placeholder="Confirm Password" value="" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="button" id="signupbutton" class="btnSubmit" value="submit">
+                    </div>
+                    <div class="row">
+                        <p class="message" id="signup_message"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

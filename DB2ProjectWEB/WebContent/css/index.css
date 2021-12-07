@@ -17,3 +17,7 @@
 	background-color: rgba(169,68,66,255);
 	color: rgba(242,222,221,255);
 }
+
+.rejected-container{
+    display: none;
+}

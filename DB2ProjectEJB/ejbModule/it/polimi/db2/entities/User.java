@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name = "User", schema = "db2project")
 @NamedQuery(name = "User.checkCredentials", query = "SELECT r FROM User r  WHERE r.username = ?1 and r.password = ?2")
 @NamedQuery(name = "User.getByUsername", query = "SELECT r FROM User r  WHERE r.username = ?1")
+@NamedQuery(name = "User.getByEmail", query = "SELECT r FROM User r  WHERE r.email = ?1")
 
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
