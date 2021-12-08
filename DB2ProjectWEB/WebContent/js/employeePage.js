@@ -48,6 +48,9 @@
 
 						//create selects and append them
 						document.getElementById("validityPeriod");
+					}else if(req.status == 401){
+						window.location.replace("unauthorised.html");
+						return;
 					}
 				}
 			}

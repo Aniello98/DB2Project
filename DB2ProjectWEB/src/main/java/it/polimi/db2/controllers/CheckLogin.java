@@ -58,8 +58,6 @@ public class CheckLogin extends HttpServlet {
 			return;
 		}
 		
-		
-		
 
 		if (user == null) {
 			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -68,7 +66,14 @@ public class CheckLogin extends HttpServlet {
 			JSONObject json = new JSONObject();
 			json.put("usrn", user.getUsername());
 			json.put("isEmployee", user.isEmployee());
+			if(user.isEmployee()) {
+				request.getSession().setAttribute("role", "employee");
+			}
+			else {
+				request.getSession().setAttribute("role", "customer");
+			}
 			request.getSession().setAttribute("user", user);
+			
 			response.setStatus(HttpServletResponse.SC_OK);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

@@ -10,6 +10,6 @@
  </filter> 
   <filter-mapping> 
     <filter-name>CheckEmployee</filter-name> 
-    <url-pattern>/BuyService</url-pattern>
+    <url-pattern>/LoadEmployeeContent</url-pattern>
  </filter-mapping> 
 </web-app>	
