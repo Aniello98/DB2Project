@@ -4,4 +4,12 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>	
+<filter> 
+      <filter-name>CheckEmployee</filter-name>
+      <filter-class>it.polimi.db2.filters.CheckEmployee</filter-class> 
+ </filter> 
+  <filter-mapping> 
+    <filter-name>CheckEmployee</filter-name> 
+    <url-pattern>/BuyService</url-pattern>
+ </filter-mapping> 
 </web-app>	

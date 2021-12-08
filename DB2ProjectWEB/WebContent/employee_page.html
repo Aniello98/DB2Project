@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee page</title>
     <script src="js/utils.js" charset="utf-8" defer></script>
+    <script src="js/checkLogin.js" charset="utf-8" defer></script>
     <script src="js/employeePage.js" charset="utf-8" defer></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/employeePage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -49,11 +51,27 @@
                     <div class="form-group">
                       <label class="col-md-4 control-label" for="validity">Validity period</label>
                       <div class="col-md-4">
-                        <select id="validity" name="validity" class="form-control">
-                          <option value="12">12</option>
-                          <option value="24">24</option>
-                          <option value="36">36</option>
-                        </select>
+                          <div class="checkbox">
+                              <label for="12">
+                                <input type='checkbox' id="check-12" name='check-12' value='12'> 12<br>
+                
+                              </label>
+                              <input id="fee-12" name="fee-12" type="text" placeholder="fee" class="form-control input-md">
+                          </div>
+                          <div class="checkbox">
+                            <label for="24">
+                              <input type='checkbox' id="check-24" name='check-24' value='24'> 24<br>
+                              
+                            </label>
+                            <input id="fee-24" name="fee-24" type="text" placeholder="fee" class="form-control input-md">
+                        </div>
+                        <div class="checkbox">
+                            <label for="36">
+                              <input type='checkbox' id="check-36" name='check-36' value='12'> 36<br>
+                              
+                            </label><input id="fee-36" name="fee-36" type="text" placeholder="fee" class="form-control input-md">
+                        </div>
+                        
                       </div>
                     </div>
                     
@@ -83,7 +101,14 @@
                     </div>
 
                     <div class="form-group">
+                        <div class="col-md-12 text-center">
                         <input type="button" id="packagebutton" class="btnSubmit" value="submit">
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                        <p class="message" id="package_message"></p>
+                        </div>
                     </div>
                     
                     </fieldset>
@@ -97,7 +122,7 @@
     <div class="container register-form costumized-form">
         <div class="form">
             <div class="note">
-                <h3>register</h3>
+                <h3>optional product creation</h3>
             </div>
 
             <div class="form-content">
@@ -105,30 +130,27 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="username" placeholder="Your Name" value=""
-                                    required />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="mail" placeholder="Email" value=""
+                                <input type="text" class="form-control" name="name" placeholder="Name" value=""
                                     required />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="password" class="form-control" name="pwd" placeholder="Your Password"
-                                    value="" required />
+                                <input type="text" class="form-control" name="fee" placeholder="Monthly fee" value=""
+                                    required />
                             </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" name="repeatPwd"
-                                    placeholder="Confirm Password" value="" required />
-                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="button" id="opbutton" class="btnSubmit" value="submit">
                         </div>
                     </div>
                     <div class="row">
-                        <input type="button" id="signupbutton" class="btnSubmit" value="submit">
-                    </div>
-                    <div class="row">
-                        <p class="message" id="signup_message"></p>
+                        <div class="col-md-6">
+                            <p class="message" id="product_message"></p>
+                        </div>
                     </div>
                 </form>
             </div>
