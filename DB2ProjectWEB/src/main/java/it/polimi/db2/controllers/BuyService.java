@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.eclipse.persistence.internal.oxm.schema.model.List;
-import org.jose4j.json.internal.json_simple.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

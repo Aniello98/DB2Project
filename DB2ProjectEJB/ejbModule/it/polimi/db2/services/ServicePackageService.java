@@ -27,7 +27,7 @@ public class ServicePackageService {
 		try {
 			servicePackages = em.createNamedQuery("ServicePackage.findAll", ServicePackage.class).getResultList();
 		}catch(PersistenceException e){
-			throw new ProjectException("Cannot load service packages");
+			e.printStackTrace();
 		}
 		return servicePackages;
 	}
