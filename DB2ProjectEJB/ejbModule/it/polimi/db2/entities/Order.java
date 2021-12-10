@@ -24,6 +24,8 @@ public class Order implements Serializable {
 	
 	private float totalValue;
 	
+	private float productsValue;
+	
 	private Date startDate;
 	
 	private boolean valid;
@@ -121,6 +123,14 @@ public class Order implements Serializable {
 	
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public float getProductsValue() {
+		return productsValue;
+	}
+
+	public void setProductsValue(float productsValue) {
+		this.productsValue = productsValue;
 	}
 	
 }

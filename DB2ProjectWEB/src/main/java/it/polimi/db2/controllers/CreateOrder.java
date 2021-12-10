@@ -98,15 +98,22 @@ public class CreateOrder extends HttpServlet {
 		List<OptionalProduct> optionalProducts = new ArrayList<OptionalProduct>();
 		
 		if(products!=null) {
+		float productsValue = 0;
 		for(int i=0; i<products.length; i++) {
+			OptionalProduct op = new OptionalProduct();
 			try {
-				optionalProducts.add(opService.findProductById(Integer.parseInt(products[i])));
-			} catch (NumberFormatException | ProjectException e) {
+				op = opService.findProductById(Integer.parseInt(products[i]));
+			} catch (NumberFormatException | ProjectException e1) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e1.printStackTrace();
 			}
+			productsValue = productsValue + op.getMonthlyFee();
+			optionalProducts.add(op);
 			
-		}}
+		}
+			order.setProductsValue(productsValue * order.getValidityPeriod().getMonths());
+		
+		}
 		
 		order.setOptionalProducts(optionalProducts);
 		

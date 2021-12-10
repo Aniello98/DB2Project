@@ -43,6 +43,7 @@ public class CheckEmployee implements Filter {
 		
 		//if the user is not logged, redirect to index
 		HttpSession s = req.getSession();
+		System.out.print(s.getAttribute("role"));
 		if (s.getAttribute("role") != "employee") {
 			res.setStatus(401);
 			res.getWriter().print("Unauthorised");

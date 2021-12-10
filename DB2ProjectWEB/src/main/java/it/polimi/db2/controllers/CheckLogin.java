@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
-
-
-
+import org.jose4j.json.internal.json_simple.JSONObject;
 
 //import org.apache.commons.lang.StringEscapeUtils;
 
