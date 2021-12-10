@@ -1,11 +1,5 @@
 (function () {
 
-    var order = null;
-    //References to the html elements
-    viewElements = {
-        //loginBtn: document.getElementById("login-btn")
-    }
-
     window.addEventListener("load", () => {
 		makeCall("GET", 'LoadEmployeeContent', null,
 			function (req) {
@@ -54,33 +48,35 @@
 
 						//create selects and append them
 						document.getElementById("validityPeriod");
+					}else if(req.status == 401){
+						window.location.replace("unauthorised.html");
+						return;
 					}
 				}
 			}
 		);
 	}, false);
 
-    document.getElementById("packagebutton").addEventListener("click", () => {
+    document.getElementById("packagebutton").addEventListener("click", (e) => {
         var form = e.target.closest("form");
         if (form.checkValidity()) {
-            makeCall("POST", 'CreatePackage', e.target.closest("form"),
+            var validityPeriods=[];
+                    if (document.getElementById("check-12").checked){
+                        validityPeriods.push({"months":12, "monthlyFee": document.getElementById("fee-12").value});
+                    }
+                    if (document.getElementById("check-24").checked){
+                        validityPeriods.push({"months":24, "monthlyFee": document.getElementById("fee-24").value});
+                    }
+                    if (document.getElementById("check-36").checked){
+                        validityPeriods.push({"months":36, "monthlyFee": document.getElementById("fee-36").value});
+                    }
+                   
+            var data = new FormData(form);
+            data.append("validityPeriods", JSON.stringify(validityPeriods));
+            makeCallForm("POST", 'CreatePackage', data,
                 function (req) {
                     if (req.readyState == XMLHttpRequest.DONE) {
-                        var message = req.responseText;
-                        switch (req.status) {
-                            case 200:
-                                
-                                break;
-                            case 400: // bad request
-                                document.getElementById("login_errormessage").textContent = message;
-                                break;
-                            case 401: // unauthorized
-                                document.getElementById("login_errormessage").textContent = message;
-                                break;
-                            case 500: // server error
-                                document.getElementById("login_errormessage").textContent = message;
-                                break;
-                        }
+                        document.getElementById("package_message").textContent = req.responseText;
                     }
                 }
             );
@@ -90,6 +86,48 @@
     });
 
 
+    document.getElementById("opbutton").addEventListener('click', (e) => {
+        var form = e.target.closest("form");
+        if (form.checkValidity()) {
+            console.log("Create..");
+          makeCall("POST", 'CreateProduct', e.target.closest("form"),
+            function(req) {
+              if (req.readyState == XMLHttpRequest.DONE) {
+                document.getElementById("product_message").textContent = req.responseText;
+              }
+            }
+          );
+        } else {
+            form.reportValidity();
+        }
+      });
+
+    document.getElementById("check-12").addEventListener("change", ()=>{
+        if(document.getElementById("check-12").checked){
+            document.getElementById("fee-12").style.display = "block";
+        }
+        else{
+            document.getElementById("fee-12").style.display = "none"
+        }
+    })
+
+    document.getElementById("check-24").addEventListener("change", ()=>{
+        if(document.getElementById("check-24").checked){
+            document.getElementById("fee-24").style.display = "block"
+        }
+        else{
+            document.getElementById("fee-24").style.display = "none"
+        }
+    })
+
+    document.getElementById("check-36").addEventListener("change", ()=>{
+        if(document.getElementById("check-36").checked){
+            document.getElementById("fee-36").style.display = "block"
+        }
+        else{
+            document.getElementById("fee-36").style.display = "none"
+        }
+    })
 
 
 }())

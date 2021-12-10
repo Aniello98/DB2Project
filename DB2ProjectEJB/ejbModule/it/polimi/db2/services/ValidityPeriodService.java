@@ -1,5 +1,7 @@
 package it.polimi.db2.services;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,7 +20,6 @@ public class ValidityPeriodService {
 	}
 	
 	
-	
 	public ValidityPeriod findPeriodById(int id) throws ProjectException {
 		ValidityPeriod validityPeriod = null;
 		
@@ -29,6 +30,14 @@ public class ValidityPeriodService {
 		}
 		
 		return validityPeriod;
+	}
+	
+	public List<ValidityPeriod> findByParameters(int months, float fee) {
+		return em.createNamedQuery("ValidityPeriod.findByParameters", ValidityPeriod.class).setParameter(1, months).setParameter(2, fee).getResultList();
+	}
+	
+	public void createValidityPeriod(ValidityPeriod v) {
+		em.persist(v);
 	}
 
 	

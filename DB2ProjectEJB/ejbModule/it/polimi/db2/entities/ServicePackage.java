@@ -59,5 +59,17 @@ public class ServicePackage implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public void setValidityPeriod(List<ValidityPeriod> periods) {
+		this.validityPeriods = periods;
+	}
+	
+	public void setOptionalProducts(List<OptionalProduct> products) {
+		this.optionalProducts = products;
+	}
+	
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
    
 }

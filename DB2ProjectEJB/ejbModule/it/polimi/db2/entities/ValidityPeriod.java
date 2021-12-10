@@ -18,8 +18,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  */
 @Entity
 @Table(name = "ValidityPeriod", schema = "db2project")
-
-
+@NamedQuery(name = "ValidityPeriod.findByParameters", query = "SELECT vp FROM ValidityPeriod vp  WHERE vp.months = ?1 and vp.monthlyFee = ?2")
 public class ValidityPeriod implements Serializable {
 
 	

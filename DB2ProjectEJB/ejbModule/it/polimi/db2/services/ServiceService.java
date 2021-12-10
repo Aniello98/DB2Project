@@ -27,5 +27,9 @@ public class ServiceService {
 		return em.createNamedQuery("Service.findAll", Service.class).getResultList();
 	}
 	
+	public Service findById(int id) {
+		return em.find(Service.class, id);
+	}
+	
 	
 }
