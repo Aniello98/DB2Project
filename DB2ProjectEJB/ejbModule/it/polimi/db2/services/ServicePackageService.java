@@ -43,6 +43,17 @@ public class ServicePackageService {
 		
 		return servicePackage;
 	}
+	
+	public List<ServicePackage> findPackageByName(String name) {
+		List<ServicePackage> servicePackages = null;
+		
+		try {
+			servicePackages = em.createNamedQuery("ServicePackage.findByName", ServicePackage.class).setParameter(1, name).getResultList();
+		}catch(PersistenceException e){
+			e.printStackTrace();
+		}
+		return servicePackages;
+	}
 
 	public void createPackage(ServicePackage sp) {
 		em.persist(sp);

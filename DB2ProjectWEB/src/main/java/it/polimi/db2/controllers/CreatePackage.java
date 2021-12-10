@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jose4j.json.internal.json_simple.JSONObject;
-import org.jose4j.json.internal.json_simple.parser.JSONParser;
-import org.jose4j.json.internal.json_simple.parser.ParseException;
+
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -67,10 +65,50 @@ public class CreatePackage extends HttpServlet {
 		
 		String name = request.getParameter("name");
 		String json = request.getParameter("validityPeriods");
+
 		Gson gson = new Gson(); // Or use new GsonBuilder().create();
 		
-		List<ValidityPeriod> validityPeriods = gson.fromJson(json, listType);
+		if(name.length()==0){
+			response.setStatus(200);
+			response.getWriter().print("You must specify a name!");
+			return;
+		}
+		
+		if(spService.findPackageByName(name).size()!=0) {
+			response.setStatus(200);
+			response.getWriter().print("Package name already used!");
+			return;
+		}
+		
+		List<ValidityPeriod> validityPeriods=new ArrayList<ValidityPeriod>();
+		
+
+		
+		try {
+		validityPeriods = gson.fromJson(json, listType);
+		}catch(NumberFormatException e){
+			response.setStatus(200);
+			response.getWriter().print("Each period must have a valid fee!");
+			return;
+		}
+		
+		if(validityPeriods.size()==0) {
+			response.setStatus(200);
+			response.getWriter().print("A package must contain at least one validity period!");
+			return;
+		}
+		
+		
+		
 		String[] services = request.getParameterValues("services");
+		
+		if(services==null) {
+			response.setStatus(200);
+			response.getWriter().print("A package must contain at least one service!");
+			return;
+		}
+		
+		
 		String[] products = request.getParameterValues("optional-products");
 		
 		
@@ -79,6 +117,8 @@ public class CreatePackage extends HttpServlet {
 		List<ValidityPeriod> packageValidityPeriods = new ArrayList<>();
 		
 		for(ValidityPeriod v : validityPeriods) {
+			
+			
 			List<ValidityPeriod> vp = vpService.findByParameters(v.getMonths(), v.getMonthlyFee());
 			if(vp.size() == 0) {
 				vpService.createValidityPeriod(v);
@@ -95,15 +135,17 @@ public class CreatePackage extends HttpServlet {
 		}
 		
 		List<OptionalProduct> packageOptionalProducts = new ArrayList<OptionalProduct>();
-		for(int i=0; i<products.length; i++) {
-			try {
-				packageOptionalProducts.add(opService.findProductById(Integer.parseInt(products[i])));
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ProjectException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		if(products!=null) {
+			for(int i=0; i<products.length; i++) {
+				try {
+					packageOptionalProducts.add(opService.findProductById(Integer.parseInt(products[i])));
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ProjectException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		newPackage.setValidityPeriod(packageValidityPeriods);

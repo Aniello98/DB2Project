@@ -15,6 +15,7 @@
               case 200:
               response = JSON.parse(req.responseText);
             	sessionStorage.setItem('username', response.usrn);
+              sessionStorage.setItem('isEmployee', response.isEmployee);
               if(response.isEmployee == true){
                 window.location.replace("employee_page.html");
               }

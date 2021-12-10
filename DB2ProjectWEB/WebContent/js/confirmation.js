@@ -8,6 +8,12 @@
 
 	window.addEventListener("load", () => {
 		order = JSON.parse(sessionStorage.getItem("order"));
+		if(order==null){
+			if(sessionStorage.getItem("isEmployee")==true || sessionStorage.getItem("username")==null){
+				window.location.replace("unauthorised.html");
+				return;
+			}
+		}
 		if (sessionStorage.getItem("username") != null) {
 			document.getElementById("login-reg-btn").style.display = "none";
 		}
@@ -60,6 +66,9 @@
 						order = JSON.parse(req.responseText);
 						sessionStorage.setItem("order", JSON.stringify(order));
 						window.location.replace("order_response.html");
+					}else if(req.status == 401){
+						window.location.replace("unauthorised.html");
+						return;
 					}
 				}
 			}

@@ -17,7 +17,7 @@
 			viewElements.usernameField = sessionStorage.getItem("username");
 			viewElements.loginBtn.innerHTML = "Logout";
 			viewElements.loginBtn.addEventListener("click", () => {
-				sessionStorage.removeItem("username");
+				sessionStorage.clear();
 				makeCall("GET", "Logout", null, () => {
 					window.location.replace("index.html");
 				})

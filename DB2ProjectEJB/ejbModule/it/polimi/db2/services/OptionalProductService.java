@@ -1,5 +1,6 @@
 package it.polimi.db2.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -28,10 +29,26 @@ public class OptionalProductService {
 		try {
 			optionalProduct = em.find(OptionalProduct.class, id);
 		}catch(PersistenceException e){
-			throw new ProjectException("Cannot load service packages");
+			throw new ProjectException("Cannot load all optional products");
 		}
 		
 		return optionalProduct;
+	}
+	
+	public List<OptionalProduct> findByName(String name) throws ProjectException{
+		List<OptionalProduct> optionalProducts=new ArrayList<>();
+		
+		try {
+			optionalProducts=em.createNamedQuery("OptionalProduct.findByName",OptionalProduct.class).setParameter(1,name).getResultList();
+		}catch(PersistenceException e){
+			throw new ProjectException("Cannot load optional products by name");
+		}
+		
+		return optionalProducts;
+	}
+	
+	public void createOptionalProduct(OptionalProduct op) {
+		em.persist(op);
 	}
 	
 	public List<OptionalProduct> findAllProducts() {

@@ -14,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "OptionalProduct", schema = "db2project")
 @NamedQuery(name = "OptionalProduct.findAll", query = "SELECT op FROM OptionalProduct op")
+@NamedQuery(name = "OptionalProduct.findByName", query = "SELECT op FROM OptionalProduct op WHERE op.name=?1")
+
 public class OptionalProduct implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

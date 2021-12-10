@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "ServicePackage", schema = "db2project")
 @NamedQuery(name = "ServicePackage.findAll", query="SELECT p FROM ServicePackage p")
+@NamedQuery(name = "ServicePackage.findByName", query="SELECT p FROM ServicePackage p WHERE p.name=?1")
 public class ServicePackage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
