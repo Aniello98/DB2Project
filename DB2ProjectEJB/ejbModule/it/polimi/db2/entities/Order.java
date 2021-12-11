@@ -24,6 +24,8 @@ public class Order implements Serializable {
 	
 	private float totalValue;
 	
+	private int totalOptional;
+	
 	private float productsValue;
 	
 	private Date startDate;
@@ -31,6 +33,8 @@ public class Order implements Serializable {
 	private boolean valid;
 	
 	private boolean rejected;
+	
+	private Date lastRejected;
 	
 	@ManyToOne
 	@JoinColumn(name = "user")
@@ -131,6 +135,22 @@ public class Order implements Serializable {
 
 	public void setProductsValue(float productsValue) {
 		this.productsValue = productsValue;
+	}
+
+	public int getTotalOptional() {
+		return totalOptional;
+	}
+
+	public void setTotalOptional(int totalOptional) {
+		this.totalOptional = totalOptional;
+	}
+
+	public Date getLastRejected() {
+		return lastRejected;
+	}
+
+	public void setLastRejected(Date lastRejected) {
+		this.lastRejected = lastRejected;
 	}
 	
 }

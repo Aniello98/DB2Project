@@ -1,6 +1,11 @@
 package it.polimi.db2.controllers;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -60,7 +65,8 @@ public class PaymentChecker extends HttpServlet {
 		
 		if(!payed){
 			System.out.println("Pagamento rifiutato");
-			order.setRejected(true);	
+			order.setRejected(true);
+			order.setLastRejected(new Date(System.currentTimeMillis()));
 		}
 		else {
 			System.out.println("Pagamento eseguito");

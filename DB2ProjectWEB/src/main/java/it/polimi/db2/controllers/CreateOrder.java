@@ -98,6 +98,7 @@ public class CreateOrder extends HttpServlet {
 		List<OptionalProduct> optionalProducts = new ArrayList<OptionalProduct>();
 		
 		if(products!=null) {
+			
 		float productsValue = 0;
 		for(int i=0; i<products.length; i++) {
 			OptionalProduct op = new OptionalProduct();
@@ -112,10 +113,10 @@ public class CreateOrder extends HttpServlet {
 			
 		}
 			order.setProductsValue(productsValue * order.getValidityPeriod().getMonths());
-		
+			order.setTotalOptional(products.length);
 		}
 		
-		order.setOptionalProducts(optionalProducts);
+		order.setOptionalProducts(optionalProducts);	
 		
 		
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").create();

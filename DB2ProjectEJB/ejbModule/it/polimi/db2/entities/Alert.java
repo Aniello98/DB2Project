@@ -18,15 +18,13 @@ public class Alert implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
 	
 	private float amount;
 	
 	private Date lastRejection;
 	
 	//TODO: revise cascade
+	@Id
 	@OneToOne(fetch=FetchType.EAGER, cascade= CascadeType.ALL)
 	@JoinColumn(name="user")
 	private User user;
