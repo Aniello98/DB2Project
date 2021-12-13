@@ -66,7 +66,9 @@ public class ConfirmOrder extends HttpServlet {
 			Date date = new Date(System.currentTimeMillis());
 			order.setUser(user);
 			order.setCreationDate(date);
+			order.setRejected(true);			
 			oService.persistOrder(order);
+			
 		}
 		
 		request.setAttribute("order", order);
