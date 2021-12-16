@@ -11,10 +11,10 @@
 	window.addEventListener("load", () => {
 		if (sessionStorage.getItem("username") == null) {
 			viewElements.loginBtn.innerHTML = "Login";
-			viewElements.usernameField.innerHTML = "";
+			document.getElementById("usernameField").innerHTML = "";
 			viewElements.loginBtn.setAttribute("href", "login.html");
 		} else {
-			viewElements.usernameField = sessionStorage.getItem("username");
+			document.getElementById("usernameField").innerHTML = sessionStorage.getItem("username");
 			viewElements.loginBtn.innerHTML = "Logout";
 			viewElements.loginBtn.addEventListener("click", () => {
 				sessionStorage.clear();

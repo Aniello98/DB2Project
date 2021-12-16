@@ -55,11 +55,11 @@ public class ConfirmOrder extends HttpServlet {
 		String json = request.getParameter("order");
 		String username = request.getParameter("user");
 		Gson gson = new Gson(); // Or use new GsonBuilder().create();
-		
+		System.out.println("1");
 		Order orderRequest = gson.fromJson(json, Order.class);
-		
+		System.out.println("2");
 		Order order = oService.findOrder(orderRequest.getId());
-		
+		System.out.println("3");
 		if(order == null) {
 			order = orderRequest;
 			User user = uService.findUserByUsername(username).get(0);
@@ -68,12 +68,14 @@ public class ConfirmOrder extends HttpServlet {
 			order.setCreationDate(date);
 			order.setRejected(true);			
 			oService.persistOrder(order);
+			System.out.println("4");
 			
 		}
-		
+		System.out.println("5");
 		request.setAttribute("order", order);
-		
+		System.out.println("6");
 		RequestDispatcher rd = request.getRequestDispatcher("/ExternalPaymentService");
+		System.out.println("7");
 		rd.forward(request, response);
 	}
 
