@@ -41,6 +41,10 @@ public class UserService {
 		return em.find(User.class, id);
 	}
 	
+	public List<User> getInsolvent(){
+		return em.createNamedQuery("User.findInsolvent", User.class).getResultList();
+	}
+	
 	public List<User> findUserByUsername(String usrn) {
 		List<User> user = null;
 		user = em.createNamedQuery("User.getByUsername", User.class).setParameter(1, usrn).getResultList();

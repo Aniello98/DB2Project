@@ -40,8 +40,8 @@ public class ReportService {
 		return em.createNamedQuery("AverageOptionalPerPackage.findAll", AverageOptionalPerPackage.class).getResultList();
 	}
 	
-	public List<SalesPerProduct> getSalesPerProduct(){
-		return em.createNamedQuery("SalesPerProduct.findAll", SalesPerProduct.class).getResultList();
+	public List<SalesPerProduct> getBestOptionalProductSeller(){
+		return em.createNamedQuery("SalesPerProduct.findBestSeller", SalesPerProduct.class).setMaxResults(1).getResultList();
 	}
 	
 	public List<Alert> getAlert(){

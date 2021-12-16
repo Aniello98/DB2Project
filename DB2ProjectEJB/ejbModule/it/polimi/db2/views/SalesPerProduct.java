@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "SalesPerProduct", schema = "db2project")
-@NamedQuery(name = "SalesPerProduct.findAll", query = "SELECT pp FROM SalesPerProduct pp ORDER BY pp.salesValue")
+@NamedQuery(name = "SalesPerProduct.findBestSeller", query = "SELECT pp FROM SalesPerProduct pp ORDER BY pp.salesValue DESC ")
 public class SalesPerProduct implements Serializable {
 
 	
