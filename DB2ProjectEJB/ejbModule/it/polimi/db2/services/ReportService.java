@@ -1,0 +1,58 @@
+package it.polimi.db2.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
+
+import it.polimi.db2.entities.Order;
+import it.polimi.db2.entities.User;
+import it.polimi.db2.exceptions.UpdateProfileException;
+import it.polimi.db2.views.Alert;
+import it.polimi.db2.views.AverageOptionalPerPackage;
+import it.polimi.db2.views.PurchasesPerPackage;
+import it.polimi.db2.views.PurchasesPerPackageAndPeriod;
+import it.polimi.db2.views.SalesPerProduct;
+import it.polimi.db2.views.SuspendedOrders;
+import it.polimi.db2.views.ValueSalesPerPackage;
+
+@Stateless
+public class ReportService {
+	@PersistenceContext(unitName = "ProjectService")
+	private EntityManager em;
+	
+	public ReportService() {
+		
+	}
+	
+	public List<PurchasesPerPackage> getPurchasesPerPackage() {
+		return em.createNamedQuery("PurchasesPerPackage.findAll", PurchasesPerPackage.class).getResultList();
+	}
+	
+	public List<PurchasesPerPackageAndPeriod> getPurchasesPerPackageAndPeriod() {
+		return em.createNamedQuery("PurchasesPerPackageAndPeriod.findAll", PurchasesPerPackageAndPeriod.class).getResultList();
+	}
+	
+	public List<AverageOptionalPerPackage> getAverageOptionalPerPackage(){
+		return em.createNamedQuery("AverageOptionalPerPackage.findAll", AverageOptionalPerPackage.class).getResultList();
+	}
+	
+	public List<SalesPerProduct> getSalesPerProduct(){
+		return em.createNamedQuery("SalesPerProduct.findAll", SalesPerProduct.class).getResultList();
+	}
+	
+	public List<Alert> getAlert(){
+		return em.createNamedQuery("Alert.findAll", Alert.class).getResultList();
+	}
+	
+	public List<ValueSalesPerPackage> getValueSalesPerPackage(){
+		return em.createNamedQuery("ValueSalesPerPackage.findAll", ValueSalesPerPackage.class).getResultList();
+	}
+	
+	public List<SuspendedOrders> getSuspendedOrders(){
+		return em.createNamedQuery("SuspendedOrders.findAll", SuspendedOrders.class).getResultList();
+	}
+}

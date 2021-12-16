@@ -1,10 +1,9 @@
-package it.polimi.db2.entities;
+package it.polimi.db2.views;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;
-
 
 /**
  * Entity implementation class for Entity: Alert
@@ -12,37 +11,27 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "Alert", schema = "db2project")
-
+@NamedQuery(name = "Alert.findAll", query = "SELECT pp FROM Alert pp")
 public class Alert implements Serializable {
-
 	
 	private static final long serialVersionUID = 1L;
+
+	@Id
+	private int user;
 	
-	
-	private float amount;
+	private int amount;
 	
 	private Date lastRejection;
 	
-	//TODO: revise cascade
-	@Id
-	@OneToOne(fetch=FetchType.EAGER, cascade= CascadeType.ALL)
-	@JoinColumn(name="user")
-	private User user;
-
 	public Alert() {
-		
-	}
-	
-	public Alert(float amount, Date lastRejection) {
-		this.amount=amount;
-		this.lastRejection=lastRejection;
+		super();
 	}
 
-	public float getAmount() {
+	public int getAmount() {
 		return amount;
 	}
 
-	public void setAmount(float amount) {
+	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 
@@ -53,7 +42,5 @@ public class Alert implements Serializable {
 	public void setLastRejection(Date lastRejection) {
 		this.lastRejection = lastRejection;
 	}
-	
-	
    
 }

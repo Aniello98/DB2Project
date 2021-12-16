@@ -24,13 +24,14 @@
         window.location.replace("confirmation.html");
     })
 
-    document.getElementById("home-btn-ok").addEventListener("click", goToHome());
-    document.getElementById("home-btn-ko").addEventListener("click", goToHome());
-        
-    var goToHome = function () {
+    document.getElementById("home-btn-ok").addEventListener("click", ()=>{
         sessionStorage.removeItem("order");
         window.location.replace("index.html");
-    }
+    });
+    document.getElementById("home-btn-ko").addEventListener("click", ()=>{
+        sessionStorage.removeItem("order");
+        window.location.replace("index.html");
+    });
 
 
 

@@ -12,9 +12,11 @@
     var username = sessionStorage.getItem("username");
     if (username == null) {
       document.getElementById("rejected-container").style.display = "none";
+      document.getElementById("activation-schedule").style.display = "none";
     }
     else {
       loadRejected(username);
+      loadSchedule(username);
     }
 
   }, false);
@@ -62,6 +64,40 @@
       }
     );
 
+  }
+
+  var loadSchedule = function (username){
+    makeCall("GET", 'LoadSchedule?username=' + username, null,
+    function (req) {
+      if (req.readyState == XMLHttpRequest.DONE) {
+        if (req.status == 200) {
+          var schedule = [];
+          schedule = JSON.parse(req.responseText);
+          if(schedule.length == 0){
+            document.getElementById("rejected-container").style.display = "none";
+            return;
+          }
+          schedule.forEach((o) => {
+            var tr = document.createElement("tr");
+            var id = document.createElement("td");
+            var activation = document.createElement("td");
+            var expiration = document.createElement("td");
+
+            id.innerHTML = o.orderId;
+            activation.innerHTML = o.activationDate;
+            expiration.innerHTML = o.expirationDate;
+
+            tr.appendChild(id);
+            tr.appendChild(activation);
+            tr.appendChild(expiration);
+            document.getElementById("schedule-table").appendChild(tr);
+          });
+            
+
+        }
+      }
+    }
+  );
   }
 
   var loadPackages = function () {
