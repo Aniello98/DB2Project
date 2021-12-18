@@ -1,14 +1,9 @@
 package it.polimi.db2.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 

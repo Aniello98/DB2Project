@@ -1,8 +1,6 @@
 package it.polimi.db2.services;
 
-import javax.ejb.EJBTransactionRolledbackException;
 import javax.ejb.Stateless;
-import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
@@ -10,7 +8,6 @@ import javax.persistence.NonUniqueResultException;
 import it.polimi.db2.entities.User;
 import it.polimi.db2.exceptions.*;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @Stateless

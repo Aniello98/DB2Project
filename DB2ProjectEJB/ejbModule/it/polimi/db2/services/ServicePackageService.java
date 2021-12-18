@@ -4,13 +4,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
-import javax.persistence.NonUniqueResultException;
 
 import it.polimi.db2.entities.ServicePackage;
-import it.polimi.db2.entities.User;
 import it.polimi.db2.exceptions.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Stateless

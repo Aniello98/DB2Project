@@ -15,7 +15,6 @@ import com.google.gson.GsonBuilder;
 
 import it.polimi.db2.entities.User;
 import it.polimi.db2.services.ReportService;
-import it.polimi.db2.services.ServicePackageService;
 import it.polimi.db2.services.UserService;
 import it.polimi.db2.views.Alert;
 import it.polimi.db2.views.AverageOptionalPerPackage;

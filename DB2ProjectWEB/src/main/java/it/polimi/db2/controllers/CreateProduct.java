@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import it.polimi.db2.entities.OptionalProduct;
 import it.polimi.db2.exceptions.ProjectException;
 import it.polimi.db2.services.OptionalProductService;
-import it.polimi.db2.services.ServicePackageService;
 
 /**
  * Servlet implementation class CreateProduct

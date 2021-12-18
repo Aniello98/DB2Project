@@ -1,12 +1,9 @@
 package it.polimi.db2.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * Entity implementation class for Entity: Service

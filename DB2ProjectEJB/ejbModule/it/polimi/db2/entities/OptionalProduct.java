@@ -1,11 +1,9 @@
 package it.polimi.db2.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 /**
  * Entity implementation class for Entity: OptionalProduct

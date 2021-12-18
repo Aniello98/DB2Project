@@ -18,9 +18,7 @@
 			viewElements.loginBtn.innerHTML = "Logout";
 			viewElements.loginBtn.addEventListener("click", () => {
 				sessionStorage.clear();
-				makeCall("GET", "Logout", null, () => {
-					window.location.replace("index.html");
-				})
+				window.location.replace("index.html");
 
 			});
 		}
