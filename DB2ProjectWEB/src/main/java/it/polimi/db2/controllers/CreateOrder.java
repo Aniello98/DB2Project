@@ -11,7 +11,6 @@ import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,11 +20,9 @@ import com.google.gson.GsonBuilder;
 
 import it.polimi.db2.entities.OptionalProduct;
 import it.polimi.db2.entities.Order;
-import it.polimi.db2.entities.User;
 import it.polimi.db2.exceptions.ProjectException;
 import it.polimi.db2.services.OptionalProductService;
 import it.polimi.db2.services.ServicePackageService;
-import it.polimi.db2.services.UserService;
 import it.polimi.db2.services.ValidityPeriodService;
 
 /**

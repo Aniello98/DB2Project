@@ -10,7 +10,6 @@ import javax.persistence.PersistenceException;
 
 import it.polimi.db2.entities.Order;
 import it.polimi.db2.entities.User;
-import it.polimi.db2.exceptions.UpdateProfileException;
 
 @Stateless
 public class OrderService {

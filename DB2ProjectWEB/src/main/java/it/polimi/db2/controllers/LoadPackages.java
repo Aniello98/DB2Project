@@ -10,16 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import it.polimi.db2.entities.OptionalProduct;
 import it.polimi.db2.entities.ServicePackage;
-import it.polimi.db2.entities.ValidityPeriod;
 import it.polimi.db2.exceptions.ProjectException;
 import it.polimi.db2.services.ServicePackageService;
 

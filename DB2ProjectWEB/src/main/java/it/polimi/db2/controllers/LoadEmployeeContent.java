@@ -18,7 +18,6 @@ import com.google.gson.GsonBuilder;
 import it.polimi.db2.entities.OptionalProduct;
 import it.polimi.db2.entities.Service;
 import it.polimi.db2.services.OptionalProductService;
-import it.polimi.db2.services.ServicePackageService;
 import it.polimi.db2.services.ServiceService;
 
 /**

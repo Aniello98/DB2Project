@@ -19,7 +19,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import it.polimi.db2.entities.OptionalProduct;
-import it.polimi.db2.entities.Order;
 import it.polimi.db2.entities.Service;
 import it.polimi.db2.entities.ServicePackage;
 import it.polimi.db2.entities.ValidityPeriod;

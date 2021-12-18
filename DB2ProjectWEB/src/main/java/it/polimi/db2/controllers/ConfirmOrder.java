@@ -2,9 +2,6 @@ package it.polimi.db2.controllers;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -17,11 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import javax.servlet.http.Cookie;
 
 import it.polimi.db2.entities.Order;
 import it.polimi.db2.entities.User;
-import it.polimi.db2.services.OptionalProductService;
 import it.polimi.db2.services.OrderService;
 import it.polimi.db2.services.UserService;
 

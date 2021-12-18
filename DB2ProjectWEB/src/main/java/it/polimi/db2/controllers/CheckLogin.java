@@ -33,6 +33,7 @@ public class CheckLogin extends HttpServlet {
 	public void init() throws ServletException {
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
