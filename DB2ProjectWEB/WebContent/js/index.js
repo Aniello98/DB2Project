@@ -32,6 +32,10 @@
               sessionStorage.setItem("order", JSON.stringify(order));
               window.location.replace("confirmation.html");
             }
+            else if(req.status == 401){
+              window.location.replace("unauthorised.html");
+              return;
+            }
           }
         });
     }
@@ -60,6 +64,10 @@
               
 
           }
+          else if(req.status == 401){
+						window.location.replace("unauthorised.html");
+						return;
+					}
         }
       }
     );
@@ -94,6 +102,10 @@
           });
             
 
+        }
+        else if(req.status == 401){
+          window.location.replace("unauthorised.html");
+          return;
         }
       }
     }
@@ -143,6 +155,10 @@
               document.getElementById("packagesContainer").appendChild(card);
             });
           }
+          else if(req.status == 401){
+						window.location.replace("unauthorised.html");
+						return;
+					}
         }
       }
     );

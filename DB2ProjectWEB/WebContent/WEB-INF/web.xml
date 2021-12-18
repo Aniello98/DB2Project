@@ -4,6 +4,8 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>	
+
+<!-- Only employees allowed -->
 <filter> 
       <filter-name>CheckEmployee</filter-name>
       <filter-class>it.polimi.db2.filters.CheckEmployee</filter-class> 
@@ -11,5 +13,35 @@
   <filter-mapping> 
     <filter-name>CheckEmployee</filter-name> 
     <url-pattern>/LoadEmployeeContent</url-pattern>
+	<url-pattern>/LoadReport</url-pattern>
+	<url-pattern>/CreatePackage</url-pattern>
+	<url-pattern>/CreateProduct</url-pattern>
+ </filter-mapping> 
+
+<!-- Only customers allowed -->
+<filter> 
+      <filter-name>CheckCustomer</filter-name>
+      <filter-class>it.polimi.db2.filters.CheckCustomer</filter-class> 
+ </filter> 
+  <filter-mapping> 
+    <filter-name>CheckCustomer</filter-name> 
+    <url-pattern>/ConfirmOrder</url-pattern>
+	<url-pattern>/PaymentChecker</url-pattern>
+	<url-pattern>/GetOrder</url-pattern>
+	<url-pattern>/LoadRejected</url-pattern>
+	<url-pattern>/LoadSchedule</url-pattern>
+ </filter-mapping> 
+
+
+<!-- Only customers or unlogged users allowed -->
+<filter> 
+      <filter-name>CheckCustomerOrNull</filter-name>
+      <filter-class>it.polimi.db2.filters.CheckCustomerOrNull</filter-class> 
+ </filter> 
+  <filter-mapping> 
+    <filter-name>CheckCustomerOrNull</filter-name> 
+    <url-pattern>/BuyService</url-pattern>
+	<url-pattern>/CreateOrder</url-pattern>
+	<url-pattern>/LoadPackages</url-pattern>
  </filter-mapping> 
 </web-app>	
