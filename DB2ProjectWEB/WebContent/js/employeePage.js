@@ -15,15 +15,17 @@
 							label.setAttribute("for", service.id);
 
                             var string = "";
+							console.log(service.type);
+							console.log(service.minutes);
 
                             if (service.minutes != 0) {
                                 string =  " - " + service.minutes + " minutes at " + service.feeMinutes + "€";
                               }
                               if (service.sms != 0) {
-                                string =  " - " + service.sms + " sms at " + service.feeSms + "€";
+                                string = string + " - " + service.sms + " sms at " + service.feeSms + "€";
                               }
                               if (service.giga != 0) {
-                                string =  " - " + service.giga + " giga at " + service.feeGiga + "€";
+                                string = string +  " - " + service.giga + " giga at " + service.feeGiga + "€";
                               }
               
 

@@ -47,7 +47,7 @@ public class LoadRejected extends HttpServlet {
 		
 		List<Order> rejectedOrders = oService.findRejectedByUser(user);
 		
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").create();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		String json = gson.toJson(rejectedOrders);
 		
 		response.setStatus(HttpServletResponse.SC_OK);
