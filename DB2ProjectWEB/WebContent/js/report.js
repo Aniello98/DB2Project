@@ -187,7 +187,7 @@
         tr.appendChild(amount);
         tr.appendChild(last);
 
-        document.getElementById("suspended-table").appendChild(tr);
+        document.getElementById("alert-table").appendChild(tr);
     }
 
     var populateBestOptionalProductSeller = (e)=>{

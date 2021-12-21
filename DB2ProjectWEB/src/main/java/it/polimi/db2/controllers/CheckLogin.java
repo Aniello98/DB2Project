@@ -36,8 +36,7 @@ public class CheckLogin extends HttpServlet {
 	}
 
 	@SuppressWarnings("unchecked")
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String usrn = null;
 		String pwd = null;

@@ -53,6 +53,7 @@ public class LoadReport extends HttpServlet {
 		
 		List<PurchasesPerPackageAndPeriod> purchasesPerPackageAndPeriod = rService.getPurchasesPerPackageAndPeriod();
 		
+		
 		List<AverageOptionalPerPackage> averageOptionalPerPackage = rService.getAverageOptionalPerPackage();
 		
 		List<SalesPerProduct> bestOptionalProductSeller = rService.getBestOptionalProductSeller();

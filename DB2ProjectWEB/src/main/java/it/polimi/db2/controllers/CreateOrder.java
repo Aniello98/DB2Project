@@ -73,7 +73,11 @@ public class CreateOrder extends HttpServlet {
 		}
 		
 		Order order = new Order();
+		
+		//set start date
 		order.setStartDate(date);
+		
+		//set validity period
 		try {
 			order.setValidityPeriod(vpService.findPeriodById(Integer.parseInt(request.getParameter("validityPeriod"))));
 		} catch (NumberFormatException e) {
@@ -84,6 +88,7 @@ public class CreateOrder extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		//set service package
 		try {
 			order.setServicePackage(spService.findPackageById(Integer.parseInt(request.getParameter("packageId"))));
 		} catch (NumberFormatException | ProjectException e) {
@@ -109,6 +114,7 @@ public class CreateOrder extends HttpServlet {
 			optionalProducts.add(op);
 			
 		}
+		//set info about optional product
 			order.setProductsValue(productsValue * order.getValidityPeriod().getMonths());
 			order.setTotalOptional(products.length);
 		}

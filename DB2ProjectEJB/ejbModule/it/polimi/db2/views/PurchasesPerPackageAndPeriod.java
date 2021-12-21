@@ -4,10 +4,11 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: PurchasesPerPackage
+ * Entity implementation class for Entity: PurchasesPerPackageAndPeriod
  *
  */
 @Entity
+@IdClass(PurchasesPerPackageAndPeriodId.class)
 @Table(name = "PurchasesPerPackageAndPeriod", schema = "db2project")
 @NamedQuery(name = "PurchasesPerPackageAndPeriod.findAll", query = "SELECT pp FROM PurchasesPerPackageAndPeriod pp")
 public class PurchasesPerPackageAndPeriod implements Serializable {
@@ -17,6 +18,10 @@ public class PurchasesPerPackageAndPeriod implements Serializable {
 
 	public PurchasesPerPackageAndPeriod() {
 		super();
+	}
+	
+	public int getPackageId() {
+		return packageId;
 	}
 	
 	public String getPackageName() {
@@ -68,6 +73,7 @@ public class PurchasesPerPackageAndPeriod implements Serializable {
 	@Id
 	private int packageId;
 	
+	@Id
 	private int periodId;
 	
 	private String packageName;

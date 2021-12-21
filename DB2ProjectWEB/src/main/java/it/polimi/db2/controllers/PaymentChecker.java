@@ -48,7 +48,7 @@ public class PaymentChecker extends HttpServlet {
 		Order order = oService.findOrder(orderToUpdate.getId());
 		
 		
-		if(order == null) {
+		if(order == null) {//error, the order should be already persisted
 			System.out.println("Ordine non trovato");
 			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			response.getWriter().println("Order not found");
@@ -69,7 +69,7 @@ public class PaymentChecker extends HttpServlet {
 		System.out.println("Aggiorno ordine");
 		oService.updateOrder(order);
 		
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-mm-dd").create();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		String json = gson.toJson(order);
 		
 		response.setStatus(HttpServletResponse.SC_OK);

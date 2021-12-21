@@ -1,5 +1,6 @@
 package it.polimi.db2.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -29,7 +30,12 @@ public class ReportService {
 	}
 	
 	public List<PurchasesPerPackageAndPeriod> getPurchasesPerPackageAndPeriod() {
-		return em.createNamedQuery("PurchasesPerPackageAndPeriod.findAll", PurchasesPerPackageAndPeriod.class).getResultList();
+		List<PurchasesPerPackageAndPeriod> list = new ArrayList<PurchasesPerPackageAndPeriod>();
+		list= em.createNamedQuery("PurchasesPerPackageAndPeriod.findAll", PurchasesPerPackageAndPeriod.class).getResultList();
+		for(PurchasesPerPackageAndPeriod p : list) {
+			System.out.println(p.getPeriodId() + " " + p.getPackageId());
+		}
+		return list;
 	}
 	
 	public List<AverageOptionalPerPackage> getAverageOptionalPerPackage(){

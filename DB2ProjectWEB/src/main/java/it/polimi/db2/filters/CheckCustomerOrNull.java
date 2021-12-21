@@ -43,6 +43,7 @@ public class CheckCustomerOrNull implements Filter {
 		
 		//if the user is not logged, redirect to index
 		HttpSession s = req.getSession();
+		System.out.println("in checkcustomerornull");
 		if (s.getAttribute("role") != "customer" && s.getAttribute("role")!=null) {
 			res.setStatus(401);
 			res.getWriter().print("Unauthorised");

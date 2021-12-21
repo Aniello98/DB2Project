@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet Filter implementation class ChackCustomer
+ * Servlet Filter implementation class CheckCustomer
  */
 @WebFilter("/CheckCustomer")
 public class CheckCustomer implements Filter {
@@ -43,6 +43,7 @@ public class CheckCustomer implements Filter {
 		
 		//if the user is not logged, redirect to index
 		HttpSession s = req.getSession();
+		System.out.println("in checkcustomer");
 		if (s.getAttribute("role") != "customer" ) {
 			res.setStatus(401);
 			res.getWriter().print("Unauthorised");
