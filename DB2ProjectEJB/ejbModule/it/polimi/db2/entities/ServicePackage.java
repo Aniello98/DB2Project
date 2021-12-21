@@ -35,7 +35,7 @@ public class ServicePackage implements Serializable {
 	inverseJoinColumns = @JoinColumn(name="optionalProduct"))
 	private Collection<OptionalProduct> optionalProducts;
 	
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="OfferedService",
 	joinColumns = @JoinColumn(name="servicePackage"),
 	inverseJoinColumns = @JoinColumn(name="service"))

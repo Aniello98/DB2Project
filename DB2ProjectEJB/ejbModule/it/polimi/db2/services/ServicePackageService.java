@@ -55,6 +55,11 @@ public class ServicePackageService {
 	public void createPackage(ServicePackage sp) {
 		em.persist(sp);
 	}
+	
+	
+	
+	
+	
 	/*public void updateServicePackage(ServicePackage p) throws UpdateProfileException {
 		try {
 			em.merge(p);

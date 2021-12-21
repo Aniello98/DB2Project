@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet Filter implementation class ChackCustomer
+ * Servlet Filter implementation class CheckCustomer
  */
 @WebFilter("/CheckCustomer")
 public class CheckCustomer implements Filter {

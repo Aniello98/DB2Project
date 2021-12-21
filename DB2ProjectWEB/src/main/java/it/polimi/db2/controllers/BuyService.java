@@ -34,7 +34,8 @@ public class BuyService extends HttpServlet {
 		// TODO Auto-generated method stub
 		String id = request.getParameter("packageId");
 		int packageId;
-		if(id != null) {
+		
+		if(id != null) {//check if id is null
 			packageId = Integer.parseInt(id);
 		}
 		else {

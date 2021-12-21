@@ -49,17 +49,17 @@ public class CreatePackage extends HttpServlet {
      */
     public CreatePackage() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		Type listType = new TypeToken<List<ValidityPeriod>>()
         {
-        }.getType();
+        }.getType(); //used to specify the type which has to retrieve the Json parser
 		
 		
 		String name = request.getParameter("name");
@@ -67,7 +67,7 @@ public class CreatePackage extends HttpServlet {
 
 		Gson gson = new Gson(); // Or use new GsonBuilder().create();
 		
-		if(name.length()==0){
+		if(name.length()==0){//check on the name
 			response.setStatus(200);
 			response.getWriter().print("You must specify a name!");
 			return;
